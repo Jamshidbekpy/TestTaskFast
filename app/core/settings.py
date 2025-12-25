@@ -20,6 +20,11 @@ class Settings(BaseSettings):
     POSTGRES_PASSWORD: str
     POSTGRES_DB: str
     SQLALCHEMY_DATABASE_URI: PostgresDsn | None = None
+    
+    CELERY_BROKER_URL: str
+    CELERY_RESULT_BACKEND: str
+    
+    
 
     model_config = {
         "env_file": ".env",

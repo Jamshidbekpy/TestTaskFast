@@ -1,11 +1,11 @@
 from fastapi import APIRouter
 from ...dependencies import db_dependency, jwt_dependency
 from ...schemas.users_schemas import UserIn, UserOut, AccessRefreshOut, RefreshIn, Me, ProfilUpdateIn, ProfilUpdateOut
-from ...repository.user_repo.user_repo import UserRepository
-from ...services.user_service.user_service import UserService
+from ...repository.user.user_repo import UserRepository
+from ...services.user.user_service import UserService
 
 router = APIRouter(
-    prefix="/auth"
+    prefix="/auth", tags=["Authentication"]
 )
 
 

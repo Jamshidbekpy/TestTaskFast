@@ -3,7 +3,7 @@ from .interfaces import AbctractUserService
 from ...schemas.users_schemas import (
     UserIn, UserOut, AccessRefreshOut, Me, ProfilUpdateOut, ProfilUpdateIn
 )
-from ...repository.user_repo.user_repo import UserRepository
+from ...repository.user.user_repo import UserRepository
 from ...utils.password import hash_password, verify_password
 from ...utils.jwt import create_access_token, create_refresh_token, decode_token
 

@@ -54,7 +54,7 @@ class Event(Base, BaseMixin):
     all_day: Mapped[bool] = mapped_column(Boolean, default=False)
     time_start: Mapped[datetime | None] = mapped_column(DateTime)
     time_end: Mapped[datetime | None] = mapped_column(DateTime)
-    rrule: Mapped[str | None] = mapped_column(Text)
+    repeat: Mapped[str | None] = mapped_column(Text)
     url: Mapped[str | None] = mapped_column(String)
     note: Mapped[str | None] = mapped_column(Text)
 
