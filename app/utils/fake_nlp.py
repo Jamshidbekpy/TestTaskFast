@@ -358,7 +358,7 @@ class FakeEventParser:
         num_alerts = random.randint(0, 2)
         alerts = []
         for _ in range(num_alerts):
-            alert_times = ["PT10M", "PT30M", "PT1H", "PT2H", "P1D"]
+            alert_times = ["PT10M", "PT30M", "PT1H", "PT2H", "P1D"] # 10 min, 30 min, 1 soat, 2 soat, 1 kuni
             alerts.append(random.choice(alert_times))
         
         # URL: 20% ehtimollik bilan

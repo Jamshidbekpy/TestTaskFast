@@ -2,7 +2,6 @@ from pydantic import BaseModel
 
 class EventCreateIn(BaseModel):
     title: str
-    description: str | None = None
     start_time: str
     end_time: str
     all_day: bool = False

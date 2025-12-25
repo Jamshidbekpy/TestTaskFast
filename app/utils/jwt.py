@@ -3,7 +3,7 @@ from ..core.settings import settings
 from jose import jwt, JWTError, ExpiredSignatureError
 from datetime import datetime, timedelta, timezone
 
-now = now = datetime.now(timezone.utc)
+now = datetime.now(timezone.utc)
 
 SECRET_KEY = settings.SECRET_KEY
 ALGORITHM = settings.ALGORITHM

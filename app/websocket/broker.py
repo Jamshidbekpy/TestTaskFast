@@ -1,15 +1,20 @@
 import os
+import sys
+import orjson
 from aio_pika import connect_robust, Message, IncomingMessage, DeliveryMode
 from typing import Callable, Dict, Any
 from dotenv import load_dotenv
 import json
 from datetime import datetime
 import uuid
+sys.stdout.flush()
 
 from ..utils.fake_nlp import FakeEventParser, FakeParseRequest
+from ..utils.json_format import normalize_for_json
+
 
 load_dotenv()
-
+DATA = {}
 class RabbitMQBroker:
     def __init__(self, url=os.getenv("CELERY_BROKER_URL"), exchange_name="chat_direct"):
         self.url = url
@@ -108,6 +113,7 @@ class RabbitMQBroker:
                     "note": str(data.note) if hasattr(data, 'note') else '',
                     "warnings": str(data.warnings) if hasattr(data, 'warnings') else '[]'
                 })
+                DATA["data"] = result_dict
                 
                 # Tasdiq so'rash uchun savol
                 if requires_confirmation:
@@ -158,6 +164,23 @@ class RabbitMQBroker:
             
             # Javob matnini tekshirish
             if response_text in ["ha", "yes", "да", "ok", "1"]:
+                # from ..utils.event_data_order import event_data_order
+                # import ast
+            
+                # data = DATA.copy()
+                # print(">>>>>>>>>>>>>>>>>>>",data,"###################################################")
+                # sys.stdout.flush()
+                # cleaned = normalize_for_json(data)
+        
+            
+                # from ..utils.object_create import create_event
+                
+                # data_list = event_data_order(cleaned) # [eventdata, eventinvites, eventalarm]
+                
+                # event = create_event(data_list[0])
+                # # eventinvites = data_list[1]
+                # # eventalarms = data_list[2]
+            
                 
                 # Tasdiq javobi
                 confirmation_msg = json.dumps({
@@ -211,3 +234,4 @@ class RabbitMQBroker:
             if queue.consumer_count == 0:
                 await queue.delete()
                 del self.queues[queue_name]
+                
