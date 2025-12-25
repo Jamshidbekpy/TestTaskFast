@@ -19,6 +19,10 @@ Seeing logs
 APIES
 Authentication(JWT)(6), Fake NLP Parser(2), Events(CRUD)(4)
 
+
+<img width="1495" height="891" alt="Screenshot 2025-12-26 at 04 59 08" src="https://github.com/user-attachments/assets/018a806b-1d1b-4188-89d0-61cb116cc3da" />
+
+
 Wevsocket
 
 client ---> Server (prompt)
