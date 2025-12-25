@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
     POSTGRES_DB: str
-    SQLALCHEMY_DATABASE_URI: PostgresDsn | None = None
+    SQLALCHEMY_DATABASE_URI: str | None = None
     
     CELERY_BROKER_URL: str
     CELERY_RESULT_BACKEND: str
@@ -31,6 +31,7 @@ class Settings(BaseSettings):
     model_config = {
         "env_file": ".env",
         "case_sensitive": True,
+         "extra":"allow" 
     }
 
 

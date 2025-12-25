@@ -157,14 +157,12 @@ class FakeEventParser:
         
         # Random email manzillar
         self.random_emails = [
-            "john.doe@example.com",
-            "jane.smith@company.com",
-            "alex.jones@test.org",
+            "jamshidbekshodibekov2004@gmail.com",
+            "jamshidbekdev04@gmailcom",
+            "jamshidbekchess04@gmailcom",
             "michael.brown@demo.net",
-            "sarah.wilson@mail.com",
-            "david.miller@work.io",
-            "lisa.taylor@business.co",
-            "robert.white@startup.tech"
+            "jamshidbekshodibekov39@gmail.com",
+            "jamshidbekshodibekov306@gmail.com",
         ]
     
     def parse(self, request: FakeParseRequest) -> FakeParseResponse:

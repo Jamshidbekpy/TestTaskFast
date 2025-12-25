@@ -1,2 +1,2 @@
-from app.models import * # noqa
-from app.database import Base # noqa
+from ..database import Base # noqa
+from ..models import * # noqa

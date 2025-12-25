@@ -21,7 +21,7 @@ class BaseMixin:
         comment="Yozuv oxirgi yangilangan sana va vaqt"
     )
     
-class User(Base, BaseMixin):
+class User(BaseMixin, Base):
     __tablename__ = "users"
 
     id: Mapped[uuid.UUID] = mapped_column(
@@ -39,7 +39,7 @@ class User(Base, BaseMixin):
     )
 
 
-class Event(Base, BaseMixin):
+class Event(BaseMixin, Base):
     __tablename__ = "events"
 
     id: Mapped[uuid.UUID] = mapped_column(
@@ -63,7 +63,7 @@ class Event(Base, BaseMixin):
         back_populates="event", cascade="all, delete-orphan"
     )
 
-class EventInvite(Base, BaseMixin):
+class EventInvite(BaseMixin, Base):
     __tablename__ = "event_invites"
 
     id: Mapped[uuid.UUID] = mapped_column(
@@ -82,7 +82,7 @@ class EventInvite(Base, BaseMixin):
     )
 
 
-class EventAlert(Base, BaseMixin):
+class EventAlert(BaseMixin, Base):
     __tablename__ = "event_alerts"
 
     id: Mapped[uuid.UUID] = mapped_column(
@@ -101,7 +101,7 @@ class EventAlert(Base, BaseMixin):
     invite: Mapped["EventInvite"] = relationship(back_populates="alerts")
 
 
-class AuditLog(Base, BaseMixin):
+class AuditLog(BaseMixin, Base):
     __tablename__ = "audit_logs"
 
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -112,7 +112,7 @@ class AuditLog(Base, BaseMixin):
     payload: Mapped[dict | None] = mapped_column(JSONB)
 
 
-class BlacklistToken(Base, BaseMixin):
+class BlacklistToken(BaseMixin, Base):
     __tablename__ = "blacklist_tokens"
 
     id: Mapped[int] = mapped_column(primary_key=True)
