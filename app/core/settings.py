@@ -24,6 +24,8 @@ class Settings(BaseSettings):
     CELERY_BROKER_URL: str
     CELERY_RESULT_BACKEND: str
     
+    RABBITMQ_DEFAULT_USER: str
+    
     
 
     model_config = {

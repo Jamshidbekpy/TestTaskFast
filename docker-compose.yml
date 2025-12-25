@@ -48,12 +48,14 @@ services:
     container_name: flower
     ports:
       - "5555:5555"
-    environment:
-      - CELERY_BROKER_URL=amqp://guest:guest@rabbitmq:5672//
-    depends_on:
-      - rabbitmq
+    command: >
+      celery flower
+      --broker=${CELERY_BROKER_URL}
     env_file:
       - .env
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
     restart: always
 
   redis:
@@ -69,9 +71,17 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
-    environment:
-      RABBITMQ_DEFAULT_USER: guest
-      RABBITMQ_DEFAULT_PASS: guest
+    # environment:
+    #   RABBITMQ_DEFAULT_USER: guest
+    #   RABBITMQ_DEFAULT_PASS: guest
+    
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     restart: always
 
   postgres:
