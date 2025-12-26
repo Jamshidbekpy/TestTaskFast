@@ -31,10 +31,10 @@ client <--- Server (parse(prompt)=draft(json))
 
 client ---> Server(client:Accept-->{draft-->EventCreate-->EventInvites--->Alarm})
 
-
-
-
 <img width="1232" height="962" alt="Screenshot 2025-12-26 at 04 57 36" src="https://github.com/user-attachments/assets/67a58733-737a-4f5c-ae1f-054b1b1a09df" />
+
+Loyiha structura jihatidan clean architecture tamoyillariga binoan yozildi (repository(model,db) ---> service(business logic) -----> API)
+.env fayllar BaseSettings asosida o'qilgan.
 
 1)modellar yozildi
 
